@@ -5,31 +5,37 @@ import {
   Toolbar,
   Container,
   Typography,
-  
+  InputBase,
 } from "@mui/material";
 import React from "react";
-import { LinkForNav } from "./style";
+import { useNavigate } from "react-router-dom";
+import { StyledLink, StyledSearchBox } from "./style";
 
-const Header = () => {
+const Header = (props) => {
+  const navigate = useNavigate();
   return (
-      <AppBar>
-        <Container fixed>
-          <Toolbar>
-            <Typography
-              variant="h5"
-              sx={{ flexGrow: 1, textDecoration: "none" }}
-            >
-              <LinkForNav to="/">Flixster</LinkForNav>
-            </Typography>
-            <Box mr={2}>
-              <LinkForNav to="/login">
-                <Button variant="outlined">Log in</Button>
-              </LinkForNav>
-            </Box>
-            <Button variant="contained">Sign Up</Button>
-          </Toolbar>
-        </Container>
-      </AppBar>
+    <AppBar position="static">
+      <Container fixed>
+        <Toolbar>
+          <Typography variant="h5" sx={{ flexGrow: 1, textDecoration: "none" }}>
+            <StyledLink to="/">Flixster</StyledLink>
+          </Typography>
+          {/* <StyledSearchBox>
+            <InputBase
+              placeholder="Search..."
+              sx={{ color: "white" }}
+            ></InputBase>
+          </StyledSearchBox> */}
+          <Box mr={2}>
+              <Button color="secondary" variant="contained"
+                onClick={() => navigate(props.login ? "/login" : "/signup")}
+              >
+                {props.login ? "Log In" : "Sign In"}
+              </Button>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };
 

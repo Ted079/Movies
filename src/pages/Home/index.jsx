@@ -1,23 +1,9 @@
-import React from 'react'
-import HeroSection from '../../components/HeroSection';
+import Card from "../../components/Card";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
-  return (
-    <div>
-      <HeroSection/>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    <h1>Hero</h1>
-    </div>
-  )
-}
+  return <div>home</div>;
+};
 
 export default Home;

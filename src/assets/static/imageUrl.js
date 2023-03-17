@@ -1,2 +1,2 @@
-export const heroImage = "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701119391.jpg";
-export const logoImage = ""
+export const heroImage = "https://w.wallhaven.cc/full/lq/wallhaven-lqg92p.jpg";
+export const logoImage = "https://cdn-icons-png.flaticon.com/512/2798/2798007.png"

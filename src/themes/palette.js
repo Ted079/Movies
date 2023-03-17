@@ -1,16 +1,27 @@
 const palette = {
-    mode: "dark",
+  mode: 'light',
     primary: {
-      main: "#DF2E38",
-      light: "#F9F5E7",
+      main: '#181823',
+      dark: '#2C3333',
+      light: '#565b57',
     },
     secondary: {
-      main: "#A7727D",
+      main: '#DF2E38',
     },
-    yellowTittle: {
-      main: "E7B10A",
+    background: {
+      // default: '#F1F1F1',
+      // paper: '#F1F1F1',
+    },
+    text: {
+      primary: 'rgba(0,0,0,0.87)',
+      secondary: 'rgba(0,0,0,0.87)',
+      hint: 'rgba(0, 0, 0, 0.38)',
+      disabled: 'rgba(0, 0, 0, 0.38)',
+    },
+    neutral: {
+      main: '#64748B',
+      contrastText: '#fff',
+    },
+};
 
-    }
-  };
-  
-  export default palette;
+export default palette;

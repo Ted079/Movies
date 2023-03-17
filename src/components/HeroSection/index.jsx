@@ -1,33 +1,26 @@
-import {
-    Button,
-    Box,
-    AppBar,
-    Toolbar,
-    Container,
-    Typography,
-    
-  } from "@mui/material";
-  import React from "react";
-  import { heroImage } from "../../assets/static/imageUrl";
+import React from "react";
+import styled from "styled-components";
+import { heroImage } from "../../assets/static/imageUrl";
+import { Box, Typography } from "@mui/system";
+import background from "../../assets/static/login.jpg"
+
+export default function HeroSection() {
+  return (
+    <Box sx={{background: "rgba(0, 0, 0, 0.5)", filter:"brightness(90%)"}}>
+    <Box sx={{
+      backgroundImage: `url(${background})`,
+      backgroundRepeat: "no-repeat",
+      backgroundColor:"rgba(0, 0, 0, 0.5)",
+      backgroundSize:"cover",
+      backgroundPosition:"cover",
+      height: "91vh",
+      width: "100%",
+      position: 'absolute',
+      zIndex: 'tooltip',
+    }}>
+    </Box>
+  </Box>
+  );
+}
+
   
-  const HeroSection = () => {
-    return (
-        <Box sx={{background: "black", opacity:"0.3"}}>
-          <Typography align="center" variant="h3" sx={{fontWeight: 900}}>
-            Movies <b style={{color: "red"}}>Blog</b>
-          </Typography>
-          <Box sx={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundRepeat: "no-repeat",
-            backgroundColor:"black",
-            backgroundSize:"cover",
-            backgroundPosition:"cover",
-            height: 200,
-            width: "100%",
-          }}>
-          </Box>
-        </Box>
-    );
-  };
-  
-  export default HeroSection;

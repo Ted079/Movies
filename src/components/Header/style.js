@@ -1,7 +1,13 @@
-import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { styled } from "@mui/system";
+import { Box } from "@mui/system";
 
-export const LinkForNav = styled(NavLink)`
-  text-decoration: none;
-  color: white;
-`;
+
+export const StyledLink = styled(NavLink)({
+  textDecoration: "none",
+  color:"white",
+})
+
+export const StyledSearchBox = styled(Box)({
+  alignItems:"center",
+})
