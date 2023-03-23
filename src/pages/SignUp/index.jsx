@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import Header from "../../components/Header";
 import { Paper } from "@mui/material";
 import { useState } from "react";
+import styled from "@emotion/styled";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -15,6 +16,20 @@ import { firebaseAuth } from "../../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import HeroSection from "../../components/HeroSection";
+
+const StyledBox = styled(Box)({
+  backgroundColor: "black",
+  opacity: "0.8",
+});
+
+const StyledTextField = styled(TextField)({
+  backgroundColor: "grey",
+  borderRadius: "5px",
+});
+
+const StyledTypography = styled(Typography)({
+  color: "white",
+});
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -39,12 +54,11 @@ const Signup = () => {
   return (
     <Box>
       <Header login />
-      <HeroSection/>
+      <HeroSection />
 
-      <Container component="main" maxWidth="xs" sx={{ position: 'relative'}}>
+      <Container component="main" maxWidth="xs" sx={{ position: "relative" }}>
         <CssBaseline />
-        <Paper>
-        <Box
+        <StyledBox
           sx={{
             marginTop: 8,
             display: "flex",
@@ -55,16 +69,17 @@ const Signup = () => {
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
 
-          <Typography  component="h1" variant="h5" >
+          <StyledTypography component="h1" variant="h5">
             Sign up
-          </Typography>
+          </StyledTypography>
 
-          <TextField
+          <StyledTextField
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            // label="Email Address"
+            placeholder="Email Address"
             name="email"
             autoComplete="email"
             autoFocus
@@ -76,12 +91,13 @@ const Signup = () => {
               })
             }
           />
-          <TextField
+          <StyledTextField
             margin="normal"
             required
             fullWidth
             name="password"
-            label="Password"
+            // label="Password"
+            placeholder="Password"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -93,7 +109,8 @@ const Signup = () => {
               })
             }
           />
-          <Button color="secondary" 
+          <Button
+            color="secondary"
             type="submit"
             fullWidth
             variant="contained"
@@ -102,13 +119,10 @@ const Signup = () => {
           >
             Sign up
           </Button>
-        </Box>
-        </Paper>
+        </StyledBox>
       </Container>
     </Box>
   );
 };
-
-
 
 export default Signup;

@@ -20,18 +20,14 @@ const Header = (props) => {
           <Typography variant="h5" sx={{ flexGrow: 1, textDecoration: "none" }}>
             <StyledLink to="/">Flixster</StyledLink>
           </Typography>
-          {/* <StyledSearchBox>
-            <InputBase
-              placeholder="Search..."
-              sx={{ color: "white" }}
-            ></InputBase>
-          </StyledSearchBox> */}
           <Box mr={2}>
-              <Button color="secondary" variant="contained"
-                onClick={() => navigate(props.login ? "/login" : "/signup")}
-              >
-                {props.login ? "Log In" : "Sign In"}
-              </Button>
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={() => navigate(props.login ? "/login" : "/signup")}
+            >
+              {props.login ? "Log In" : "Sign In"}
+            </Button>
           </Box>
         </Toolbar>
       </Container>

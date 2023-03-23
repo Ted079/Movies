@@ -6,7 +6,7 @@ import background from "../../assets/static/login.jpg"
 
 export default function HeroSection() {
   return (
-    <Box sx={{background: "rgba(0, 0, 0, 0.5)", filter:"brightness(90%)"}}>
+    <Box sx={{background: "rgba(0, 0, 0, 0.5)", filter:"brightness(100%)"}}>
     <Box sx={{
       backgroundImage: `url(${background})`,
       backgroundRepeat: "no-repeat",
