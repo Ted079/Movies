@@ -17,10 +17,15 @@ const StyledListItem = styled(ListItem)({
   background: "red",
  
 });
+const StyBox = styled(Box)({
+  marginRight:"15px"
+ 
+});
 
 
 const MovieCard = ({ movieData }) => {
   return (
+    <StyBox >
     <Card sx={{ maxWidth: 211 }}>
       <CardActionArea>
         <Box
@@ -49,6 +54,7 @@ const MovieCard = ({ movieData }) => {
         </CardContent>
       </CardActionArea>
     </Card>
+    </StyBox>
 
     // <Container>
     // <img src={`https://image.tmdb.org/t/p/w300${movieData.image}`} alt="moive" />
