@@ -3,9 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar";
 import { fetchMovies, getGenres } from "../../store";
-import Slider from "../../components/Slider"; 
+import Slider from "../../components/Slider";
+import {Box, styled} from "@mui/material";
+ 
 
-
+const Container = styled(Box)({
+  maxWidth: "1350px",
+  margin: "0 auto",
+  position: "relative",
+  marginTop:"90px",
+})
 
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,12 +37,16 @@ const Home = () => {
   // console.log(movies);
 
   return (
-    <div>
+    <Container>
       <Navbar isScrolled={isScrolled} />
-      
+
       <Slider movies={movies} />
-    </div>
+    </Container>
   );
 };
+
+
+
+
 
 export default Home;

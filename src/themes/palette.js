@@ -1,7 +1,7 @@
 const palette = {
   mode: 'light',
     primary: {
-      main: '#000000',
+      main: '#191825',
       dark: '#f3f3f3',
       light: '#565b57',
     },
@@ -10,7 +10,7 @@ const palette = {
     },
     background: {
       default: '#ffffff',
-      paper: '#F0EEED',
+      paper: '#F5F5F5',
     },
     text: {
       primary: 'rgba(0,0,0,0.87)',
@@ -18,7 +18,6 @@ const palette = {
       hint: 'rgba(142,27,27,0.38)',
       disabled: 'rgba(218,21,21,0.38)',
     },
-    // divider: 'rgba(249,0,0,0.12)',
   
     neutral: {
       main: '#64748B',

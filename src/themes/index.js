@@ -4,4 +4,5 @@ import palette from "./palette";
 export default createTheme ({
 
     palette,
+   
 }) 

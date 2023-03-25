@@ -18,14 +18,14 @@ import {
 } from "@mui/material";
 import { StyledLink } from "../Header/style";
 import SearchIcon from "@mui/icons-material/Search";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
-  justifyContent: "space-around",
+  justifyContent: "space-between",
 });
 
 const StyledSearchBox = styled(Box)({
@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <AppBar>
       <StyledToolbar>
-        <Typography variant="h5">
+        <Typography variant="h5" >
           <StyledLink>Flixster</StyledLink>
         </Typography>
         <StyledSearchBox>
@@ -69,7 +69,7 @@ const Navbar = () => {
           ></InputBase>
         </StyledSearchBox>
 
-        <List sx={{display:{xs: "none", sm: "none", md: "flex" }}}>
+        <List sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
           {links.map(({ name, link }) => {
             return (
               <ListItem key={name} sx={{ width: "100px" }}>
@@ -79,15 +79,15 @@ const Navbar = () => {
           })}
         </List>
 
-        <Button
+        <Button sx={{width:15}}
           color="secondary"
-          variant="contained"
           onClick={() => signOut(firebaseAuth)}
         >
-          Sign out
+          <LogoutIcon fontSize="small"/>
         </Button>
-        <MenuIcon sx={{display:{xs: "block", sm: "block", md: "none" }}}
-            onClick={() => SetOpen(!open)}
+        <MenuIcon
+          sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+          onClick={() => SetOpen(!open)}
         />
       </StyledToolbar>
       <Menu
@@ -96,19 +96,21 @@ const Navbar = () => {
         open={open}
         onClose={() => SetOpen(!open)}
         anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
+          vertical: "top",
+          horizontal: "right",
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
+          vertical: "top",
+          horizontal: "left",
         }}
       >
-        <Box sx={{width: 150}}>
-        {links.map(({ name, link }) => {
+        <Box sx={{ width: 150 }}>
+          {links.map(({ name, link }) => {
             return (
-              <MenuItem key={name} sx={{ width: "100px",}}>
-                <StyledLink sx={{color: "black"}} to={link}>{name}</StyledLink>
+              <MenuItem key={name} sx={{ width: "100px" }}>
+                <StyledLink sx={{ color: "black" }} to={link}>
+                  {name}
+                </StyledLink>
               </MenuItem>
             );
           })}

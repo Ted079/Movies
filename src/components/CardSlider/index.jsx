@@ -1,40 +1,44 @@
-import React, { useRef, useState } from "react";
 import MovieCard from "../MovieCard";
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Container } from "@mui/system";
+import { Typography } from "@mui/material";
 
 const StyledBox = styled(Box)({
-  marginLeft: "90px",
-  paddingRight: "40px",
+  // marginLeft: "90px",
+  // paddingRight: "40px",
 });
+
+const StyledTypography = styled(Typography)({
+
+});
+
 
 
 
 export default function CardSlider({ data, title }) {
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 6,
+      breakpoint: { max: 3000, min: 1300 },
+      items: 5,
     },
     tablet: {
       breakpoint: { max: 1024, min: 720 },
-      items: 4,
+      items: 3,
     },
     tabletx: {
-      breakpoint: { max: 720, min: 464 },
-      items: 3,
+      breakpoint: { max: 768, min: 464 },
+      items: 2,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 2,
+      items: 1,
     },
   };
   return (
     <StyledBox>
-      <h1>{title}</h1>
+      <StyledTypography component="h1" variant="h6">{title}</StyledTypography>
       <Carousel responsive={responsive}>
         {data.map((movie, index) => {
           return <MovieCard movieData={movie} index={index} key={movie.id} />;
