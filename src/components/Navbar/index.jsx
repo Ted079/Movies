@@ -41,7 +41,8 @@ const StyledSearchBox = styled(Box)({
 
 const Navbar = () => {
   const links = [
-    { name: "TV Series", link: "/tv" },
+    { name: "Home", link: "/" },
+    { name: "TVSeries", link: "/tv" },
     { name: "Movies", link: "/movies" },
   ];
 

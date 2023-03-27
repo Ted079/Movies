@@ -16,12 +16,12 @@ export const getGenres = createAsyncThunk("flixster/genres", async () => {
   const {
     data: { genres },
   } = await axios.get(`${TMBD_BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
-    // console.log(data);
+  // console.log(data);
   return genres;
 });
 
 const createArrayFromRawData = (array, moviesArray, genres) => {
-    // console.log(array);
+  // console.log(array);
   array.forEach((movie) => {
     const movieGenres = [];
     movie.genre_ids.forEach((genre) => {
@@ -29,12 +29,12 @@ const createArrayFromRawData = (array, moviesArray, genres) => {
       if (name) movieGenres.push(name.name);
     });
     if (movie.backdrop_path)
-    moviesArray.push({
-      id: movie.id,
-      name: movie?.original_name ? movie.original_name : movie.original_title,
-      image: movie.backdrop_path,
-      genres: movieGenres.slice(0, 3),
-    }); 
+      moviesArray.push({
+        id: movie.id,
+        name: movie?.original_name ? movie.original_name : movie.original_title,
+        image: movie.backdrop_path,
+        genres: movieGenres.slice(0, 3),
+      });
   });
 };
 
@@ -60,7 +60,19 @@ export const fetchMovies = createAsyncThunk(
       genres,
       true
     );
-    // return getRawData(`${TMBD_BASE_URL}/discover/${type}?api_key=${API_KEY}&with-genres=${genre}`)
+  }
+);
+
+export const fetchDataByGenre = createAsyncThunk(
+  "flixster/moviesByGenres",
+  async ({ genre, type }, thunkApi) => {
+    const {
+      flixster: { genres },
+    } = thunkApi.getState();
+    return getRawData(
+      `${TMBD_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genre}`,
+      genres
+    );
     // console.log(data);
   }
 );
@@ -74,8 +86,12 @@ const FlixsterSlice = createSlice({
       state.genresLoaded = true;
     });
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
-        state.movies = action.payload;
-      });
+      state.movies = action.payload;
+    });
+
+    builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
+      state.movies = action.payload;
+    });
   },
 });
 
