@@ -57,7 +57,7 @@ const Login = () => {
   return (
     // <ThemeProvider theme={theme}>
     <div>
-      <Header login />
+      <Header />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

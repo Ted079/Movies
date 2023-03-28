@@ -16,15 +16,19 @@ import { firebaseAuth } from "../../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import HeroSection from "../../components/HeroSection";
+import Footer from "../../components/Footer";
 
 const StyledBox = styled(Box)({
   backgroundColor: "black",
-  opacity: "0.8",
+  opacity: "0.9",
+  borderRadius: "8px",
 });
 
 const StyledTextField = styled(TextField)({
-  backgroundColor: "grey",
+  backgroundColor: "#8c8c8c",
   borderRadius: "5px",
+  position:"relative",
+  
 });
 
 const StyledTypography = styled(Typography)({
@@ -56,7 +60,13 @@ const Signup = () => {
       <Header login />
       <HeroSection />
 
-      <Container component="main" maxWidth="xs" sx={{ position: "relative" }}>
+      <Container
+        component="main"
+        // maxWidth="xs"
+        sx={{
+          maxWidth: { xs: "100%", sm: "450px", md: "450px" }
+        }}
+      >
         <CssBaseline />
         <StyledBox
           sx={{
@@ -121,6 +131,7 @@ const Signup = () => {
           </Button>
         </StyledBox>
       </Container>
+      <Footer />
     </Box>
   );
 };
