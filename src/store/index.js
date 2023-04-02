@@ -77,6 +77,9 @@ export const fetchDataByGenre = createAsyncThunk(
   }
 );
 
+
+
+
 const FlixsterSlice = createSlice({
   name: "Flixster",
   initialState,
@@ -92,6 +95,8 @@ const FlixsterSlice = createSlice({
     builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
       state.movies = action.payload;
     });
+
+    
   },
 });
 

@@ -1,10 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-import { heroImage } from "../../assets/static/imageUrl";
 import { Box, Typography } from "@mui/system";
-import background from "../../assets/static/login1.jpg"
+import background from "../../assets/static/login12.jpg"
 
-export default function HeroSection() {
+export default function LoginBackground() {
   return (
     <Box sx={{background: "rgba(0, 0, 0, 0.5)", filter:"brightness(70%)"}}>
     <Box sx={{
@@ -22,5 +20,3 @@ export default function HeroSection() {
   </Box>
   );
 }
-
-  

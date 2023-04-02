@@ -15,13 +15,15 @@ import {
   TextField,
   Menu,
   MenuItem,
+  FormControl,
 } from "@mui/material";
 import { StyledLink } from "../Header/style";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useDispatch, useSelector } from "react-redux";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -53,38 +55,54 @@ const Navbar = () => {
   });
 
   const [open, SetOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  const onHandleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  console.log(inputValue);
 
   return (
     <AppBar>
       <StyledToolbar>
-        <Typography variant="h5" >
+        <Typography variant="h5">
           <StyledLink>Flixster</StyledLink>
         </Typography>
-        <StyledSearchBox>
-          <Box>
-            <SearchIcon />
-          </Box>
-          <InputBase
-            placeholder="Search..."
-            sx={{ color: "white" }}
-          ></InputBase>
-        </StyledSearchBox>
 
         <List sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
           {links.map(({ name, link }) => {
             return (
-              <ListItem key={name} sx={{ width: "100px" }}>
+              <ListItem
+                key={name}
+                sx={{ width: "100px", ":hover": { border: " red" } }}
+              >
                 <StyledLink to={link}>{name}</StyledLink>
               </ListItem>
             );
           })}
         </List>
 
-        <Button sx={{width:15}}
+        <StyledSearchBox>
+          <Box>
+            <SearchIcon />
+          </Box>
+          {/* <form> */}
+          <InputBase
+            placeholder="Search..."
+            sx={{ color: "red" }}
+            onChange={onHandleChange}
+            value={inputValue}
+          />
+          {/* </form> */}
+        </StyledSearchBox>
+
+        <Button
+          sx={{ width: 15 }}
           color="secondary"
           onClick={() => signOut(firebaseAuth)}
         >
-          <LogoutIcon fontSize="small"/>
+          <LogoutIcon fontSize="small" />
         </Button>
         <MenuIcon
           sx={{ display: { xs: "block", sm: "block", md: "none" } }}

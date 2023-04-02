@@ -1,41 +1,26 @@
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {Button, CssBaseline,TextField, Box, Typography, styled} from "@mui/material";
 import Header from "../../components/Header";
-import Avatar from "@mui/material/Avatar";
 import { useState } from "react";
+// import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Avatar from "@mui/material/Avatar";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
+import LoginBackground from "../../components/LoginBackground";
+import Footer from "../../components/Footer";
 
-// const theme = createTheme({
-//     palette: {
-//         mode: 'light',
-//         primary: {
-//           main: '#413543',
-//         },
-//         secondary: {
-//           main: '#f50057',
-//         },
-//         background: {
-//           default: '#E4DCCF',
-//           paper: '#413543',
-//         },
-//         text: {
-//           primary: 'rgba(74,74,74,0.87)',
-//           secondary: 'rgba(74,74,74,0.87)',
-//           hint: 'rgba(0, 0, 0, 0.38)',
-//           disabled: 'rgba(0, 0, 0, 0.38)',
-//         },
-//       },
+const StyledTextField = styled(TextField)({
+  backgroundColor: "#333333",
+  borderRadius: "5px",
+  position: "relative",
+  "& input": {
+    color: "#fff",
+  },
+});
 
-// });
 const Login = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState("");
   const [formValues, setFromValues] = useState({
     email: "",
     password: "",
@@ -43,10 +28,11 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+      setError("");
       const { email, password } = formValues;
       await signInWithEmailAndPassword(firebaseAuth, email, password);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      setError(error.message);
     }
   };
 
@@ -55,32 +41,40 @@ const Login = () => {
   });
 
   return (
-    // <ThemeProvider theme={theme}>
-    <div>
+    <Box>
       <Header />
-      <Container component="main" maxWidth="xs">
+      <LoginBackground />
+      <Box component="main"
+        sx={{
+          justifyContent: "center",
+          margin: "0 auto",
+          maxWidth: { xs: "100%", sm: "950px", md: "950px" },
+        }}>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            backgroundColor: "#000000",
+            opacity: { xs: "1", sm: "0.9", md: "0.9" },
+            borderRadius: { xs: "0px", sm: "8px", md: "8px" },
+            marginTop: { xs: 0, sm: 8, md: 8 },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            padding: { xs: 3, sm: 6, md: 6 },
+            height: { xs: "100vh", sm: "" },
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          </Avatar>
 
-          <Typography component="h1" variant="h5">
-            Sign up
+          <Typography color={"background.default"} component="h1" variant="h5">
+          Unlimited movies, TV shows, and more
           </Typography>
 
-          <TextField
+          <StyledTextField
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            placeholder="Email Address"
             name="email"
             autoComplete="email"
             autoFocus
@@ -92,12 +86,12 @@ const Login = () => {
               })
             }
           />
-          <TextField
+          <StyledTextField
             margin="normal"
             required
             fullWidth
             name="password"
-            label="Password"
+            placeholder="Password"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -109,7 +103,23 @@ const Login = () => {
               })
             }
           />
-          <Button color="secondary" 
+
+          <Box
+            sx={{
+              paddingBottom: "15px",
+              height: "20px",
+              minWidth: "350px",
+            }}
+          >
+            {error ? (
+              <Typography variant="subtitle2" sx={{ color: "#e87c03" }}>
+                {error}
+              </Typography>
+            ) : null}
+          </Box>
+
+          <Button
+            color="secondary"
             type="submit"
             fullWidth
             variant="contained"
@@ -119,9 +129,8 @@ const Login = () => {
             Login
           </Button>
         </Box>
-      </Container>
-    </div>
-    // </ThemeProvider>
+      </Box>
+    </Box>
   );
 };
 

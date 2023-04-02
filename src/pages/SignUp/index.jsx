@@ -1,13 +1,6 @@
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import {Button, CssBaseline,TextField, Box, Typography, styled} from "@mui/material";
 import Header from "../../components/Header";
-import { Paper } from "@mui/material";
 import { useState } from "react";
-import styled from "@emotion/styled";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -18,25 +11,18 @@ import Avatar from "@mui/material/Avatar";
 import HeroSection from "../../components/HeroSection";
 import Footer from "../../components/Footer";
 
-const StyledBox = styled(Box)({
-  backgroundColor: "black",
-  opacity: "0.9",
-  borderRadius: "8px",
-});
-
 const StyledTextField = styled(TextField)({
-  backgroundColor: "#8c8c8c",
+  backgroundColor: "#333333",
   borderRadius: "5px",
-  position:"relative",
-  
-});
-
-const StyledTypography = styled(Typography)({
-  color: "white",
+  position: "relative",
+  "& input": {
+    color: "#fff",
+  },
 });
 
 const Signup = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState("");
   const [formValues, setFromValues] = useState({
     email: "",
     password: "",
@@ -44,10 +30,12 @@ const Signup = () => {
 
   const handleSignIn = async () => {
     try {
+      setError("");
       const { email, password } = formValues;
       await createUserWithEmailAndPassword(firebaseAuth, email, password);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
     }
   };
 
@@ -59,36 +47,39 @@ const Signup = () => {
     <Box>
       <Header login />
       <HeroSection />
-
-      <Container
+      <Box
         component="main"
-        // maxWidth="xs"
         sx={{
-          maxWidth: { xs: "100%", sm: "450px", md: "450px" }
+          justifyContent: "center",
+          margin: "0 auto",
+          maxWidth: { xs: "100%", sm: "450px", md: "450px" },
         }}
       >
         <CssBaseline />
-        <StyledBox
+        <Box
           sx={{
-            marginTop: 8,
+            backgroundColor: "#000000",
+            opacity: { xs: "1", sm: "0.9", md: "0.9" },
+            borderRadius: { xs: "0px", sm: "8px", md: "8px" },
+            marginTop: { xs: 0, sm: 8, md: 8 },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: 6,
+            padding: { xs: 3, sm: 6, md: 6 },
+            height: { xs: "100vh", sm: "" },
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
 
-          <StyledTypography component="h1" variant="h5">
+          <Typography color={"background.default"} component="h1" variant="h5">
             Sign up
-          </StyledTypography>
+          </Typography>
 
           <StyledTextField
             margin="normal"
             required
             fullWidth
             id="email"
-            // label="Email Address"
             placeholder="Email Address"
             name="email"
             autoComplete="email"
@@ -106,7 +97,6 @@ const Signup = () => {
             required
             fullWidth
             name="password"
-            // label="Password"
             placeholder="Password"
             type="password"
             id="password"
@@ -119,6 +109,20 @@ const Signup = () => {
               })
             }
           />
+
+          <Box
+            sx={{
+              paddingBottom: "15px",
+              height: "20px",
+              minWidth: "350px",
+            }}
+          >
+            {error ? (
+              <Typography variant="subtitle2" sx={{ color: "#e87c03" }}>
+                {error}
+              </Typography>
+            ) : null}
+          </Box>
           <Button
             color="secondary"
             type="submit"
@@ -129,9 +133,9 @@ const Signup = () => {
           >
             Sign up
           </Button>
-        </StyledBox>
-      </Container>
-      <Footer />
+        </Box>
+      </Box>
+      {/* <Footer /> */}
     </Box>
   );
 };

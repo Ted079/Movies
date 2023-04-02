@@ -27,7 +27,6 @@ const Movies = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("useEffect");
     dispatch(getGenres());
   }, []);
 
@@ -39,7 +38,7 @@ const Movies = () => {
     setIsScrolled(window.pageXOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
-  
+
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     // if (currentUser) navigate("/");
   });
@@ -48,11 +47,10 @@ const Movies = () => {
   return (
     <Container>
       <Navbar isScrolled={isScrolled} />
-      <div>
-      <SelectGenre genres={genres} type="movie" />
+      <Box>
+        <SelectGenre genres={genres} type="movie" />
         {movies.length ? <Slider movies={movies} /> : <NotFound />}
-        {/* <Slider movies={movies} /> */}
-      </div>
+      </Box>
     </Container>
   );
 };

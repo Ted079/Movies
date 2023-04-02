@@ -5,6 +5,7 @@ import Login from "../../pages/Login";
 import Signup from "../../pages/SignUp";
 import Movies from "../../pages/Movies";
 import TVSeries from "../../pages/TVSeries";
+import Details from "../../pages/Details/Details";
 
 
 const AppRoutes = () => {
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<Signup />}/>
       <Route path="/movies" element={<Movies />}/>
       <Route path="/tv" element={<TVSeries />}/>
+      <Route path="/:id" element={<Details/>}/>
       <Route path="/" element={<Home />}/>
     </Routes>
   );
