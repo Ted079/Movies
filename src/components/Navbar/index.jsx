@@ -5,17 +5,12 @@ import {
   Button,
   Box,
   AppBar,
-  Toolbar,
-  Container,
   Typography,
   InputBase,
   ListItem,
   List,
-  styled,
-  TextField,
   Menu,
   MenuItem,
-  FormControl,
 } from "@mui/material";
 import { StyledLink } from "../Header/style";
 import SearchIcon from "@mui/icons-material/Search";
@@ -24,22 +19,10 @@ import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useDispatch, useSelector } from "react-redux";
-
-const StyledToolbar = styled(Toolbar)({
-  display: "flex",
-  justifyContent: "space-between",
-});
-
-const StyledSearchBox = styled(Box)({
-  alignItems: "center",
-  // width:"150px",
-  borderRadius: "5px",
-  paddingLeft: "10px",
-  paddingTop: "3px",
-  backgroundColor: "rgb(38,38,38)",
-  display: "flex",
-  gap: "10px",
-});
+import { NavLink } from "react-router-dom";
+import { NavLinksStyles } from "./style";
+import { StyledToolbar } from "./style";
+import { StyledSearchBox } from "./style";
 
 const Navbar = () => {
   const links = [
@@ -70,14 +53,20 @@ const Navbar = () => {
           <StyledLink>Flixster</StyledLink>
         </Typography>
 
-        <List sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
+        <List
+          sx={{
+            width: "100px",
+            display: { xs: "none", sm: "none", md: "flex" },
+            textColor: "inherit",
+            marginRight: "99px",
+          }}
+        >
           {links.map(({ name, link }) => {
             return (
-              <ListItem
-                key={name}
-                sx={{ width: "100px", ":hover": { border: " red" } }}
-              >
-                <StyledLink to={link}>{name}</StyledLink>
+              <ListItem key={name}>
+                <NavLink style={NavLinksStyles} to={link}>
+                  {name}
+                </NavLink>
               </ListItem>
             );
           })}
@@ -90,7 +79,6 @@ const Navbar = () => {
           {/* <form> */}
           <InputBase
             placeholder="Search..."
-            sx={{ color: "red" }}
             onChange={onHandleChange}
             value={inputValue}
           />
@@ -98,11 +86,12 @@ const Navbar = () => {
         </StyledSearchBox>
 
         <Button
-          sx={{ width: 15 }}
-          color="secondary"
+          sx={{ width: 100, color: "white" }}
+          variant="outlined"
           onClick={() => signOut(firebaseAuth)}
         >
           <LogoutIcon fontSize="small" />
+          {/* Log Out */}
         </Button>
         <MenuIcon
           sx={{ display: { xs: "block", sm: "block", md: "none" } }}
@@ -126,7 +115,7 @@ const Navbar = () => {
         <Box sx={{ width: 150 }}>
           {links.map(({ name, link }) => {
             return (
-              <MenuItem key={name} sx={{ width: "100px" }}>
+              <MenuItem key={name}>
                 <StyledLink sx={{ color: "black" }} to={link}>
                   {name}
                 </StyledLink>

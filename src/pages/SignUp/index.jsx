@@ -1,4 +1,4 @@
-import {Button, CssBaseline,TextField, Box, Typography, styled} from "@mui/material";
+import { Button, CssBaseline, Box, Typography } from "@mui/material";
 import Header from "../../components/Header";
 import { useState } from "react";
 import {
@@ -10,15 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import HeroSection from "../../components/HeroSection";
 import Footer from "../../components/Footer";
-
-const StyledTextField = styled(TextField)({
-  backgroundColor: "#333333",
-  borderRadius: "5px",
-  position: "relative",
-  "& input": {
-    color: "#fff",
-  },
-});
+import { StyledTextField } from "./style";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -50,23 +42,22 @@ const Signup = () => {
       <Box
         component="main"
         sx={{
-          justifyContent: "center",
           margin: "0 auto",
-          maxWidth: { xs: "100%", sm: "450px", md: "450px" },
+          maxWidth: { xs: "100%", sm: "100%", md: "450px" },
         }}
       >
         <CssBaseline />
         <Box
           sx={{
             backgroundColor: "#000000",
-            opacity: { xs: "1", sm: "0.9", md: "0.9" },
-            borderRadius: { xs: "0px", sm: "8px", md: "8px" },
-            marginTop: { xs: 0, sm: 8, md: 8 },
+            opacity: { xs: "1", sm: "1", md: "0.9" },
+            borderRadius: { xs: "0px", sm: "0px", md: "8px" },
+            marginTop: { xs: 0, sm: 0, md: 8 },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: { xs: 3, sm: 6, md: 6 },
-            height: { xs: "100vh", sm: "" },
+            padding: { xs: 5, sm: 6, md: 6 },
+            height: { xs: "100vh", sm: "100vh", md: "" },
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
@@ -128,7 +119,7 @@ const Signup = () => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 3, mb: 2, maxWidth: "450px" }}
             onClick={handleSignIn}
           >
             Sign up

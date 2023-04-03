@@ -63,6 +63,21 @@ export const fetchMovies = createAsyncThunk(
   }
 );
 
+
+// export const fetchDetails = createAsyncThunk(
+//   "flixster/details",
+//   async ({ type, id }, thunkApi) => {
+//     const {
+//       flixster: { genres },
+//     } = thunkApi.getState();
+//     return getRawData(
+//       `${TMBD_BASE_URL}/${type}/${id}?api_key=${API_KEY}`,
+//       genres,
+//       true
+//     );
+//   }
+// );
+
 export const fetchDataByGenre = createAsyncThunk(
   "flixster/moviesByGenres",
   async ({ genre, type }, thunkApi) => {
@@ -76,9 +91,6 @@ export const fetchDataByGenre = createAsyncThunk(
     // console.log(data);
   }
 );
-
-
-
 
 const FlixsterSlice = createSlice({
   name: "Flixster",
@@ -96,7 +108,9 @@ const FlixsterSlice = createSlice({
       state.movies = action.payload;
     });
 
-    
+    // builder.addCase(fetchDetails.fulfilled, (state, action) => {
+    //   state.movies = action.payload;
+    // });
   },
 });
 

@@ -1,25 +1,17 @@
-import {Button, CssBaseline,TextField, Box, Typography, styled} from "@mui/material";
+import { Button, CssBaseline, Box, Typography } from "@mui/material";
 import Header from "../../components/Header";
 import { useState } from "react";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Avatar from "@mui/material/Avatar";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
 import LoginBackground from "../../components/LoginBackground";
 import Footer from "../../components/Footer";
-
-const StyledTextField = styled(TextField)({
-  backgroundColor: "#333333",
-  borderRadius: "5px",
-  position: "relative",
-  "& input": {
-    color: "#fff",
-  },
-});
+import { StyledTextField } from "../SignUp/style";
+import { StyTyp } from "../SignUp/style";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [formValues, setFromValues] = useState({
     email: "",
@@ -41,93 +33,115 @@ const Login = () => {
   });
 
   return (
-    <Box>
+    <Box showPassword={showPassword}>
       <Header />
       <LoginBackground />
-      <Box component="main"
+      <Box
+        component="main"
         sx={{
-          justifyContent: "center",
           margin: "0 auto",
-          maxWidth: { xs: "100%", sm: "950px", md: "950px" },
-        }}>
+          maxWidth: { xs: "100%", sm: "100%", md: "950px" },
+        }}
+      >
         <CssBaseline />
         <Box
           sx={{
             backgroundColor: "#000000",
-            opacity: { xs: "1", sm: "0.9", md: "0.9" },
-            borderRadius: { xs: "0px", sm: "8px", md: "8px" },
-            marginTop: { xs: 0, sm: 8, md: 8 },
+            opacity: { xs: "1", sm: "1", md: "0.9" },
+            borderRadius: { xs: "0px", sm: "0px", md: "8px" },
+            marginTop: { xs: 0, sm: 0, md: 8 },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: { xs: 3, sm: 6, md: 6 },
-            height: { xs: "100vh", sm: "" },
+            padding: { xs: 5, sm: 6, md: 6 },
+            height: { xs: "100vh", sm: "100vh", md: "" },
           }}
         >
+          <StyTyp component="h1" variant="h4" fontWeight={"bold"}>
+            Unlimited movies, TV shows, and more
+          </StyTyp>
+          <StyTyp variant="h6">Watch anywhere. Cancel anytime.</StyTyp>
+          <StyTyp component="h1" variant="h6">
+            Enter your email to create or restart your membership.
+          </StyTyp>
 
-          <Typography color={"background.default"} component="h1" variant="h5">
-          Unlimited movies, TV shows, and more
-          </Typography>
+          {showPassword && (
+            <StyledTextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              placeholder="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={formValues.email}
+              onChange={(event) =>
+                setFromValues({
+                  ...formValues,
+                  [event.target.name]: event.target.value,
+                })
+              }
+            />
+          )}
 
-          <StyledTextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            placeholder="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={formValues.email}
-            onChange={(event) =>
-              setFromValues({
-                ...formValues,
-                [event.target.name]: event.target.value,
-              })
-            }
-          />
-          <StyledTextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            placeholder="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={formValues.password}
-            onChange={(event) =>
-              setFromValues({
-                ...formValues,
-                [event.target.name]: event.target.value,
-              })
-            }
-          />
-
+          {showPassword && (
+            <StyledTextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              placeholder="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={formValues.password}
+              onChange={(event) =>
+                setFromValues({
+                  ...formValues,
+                  [event.target.name]: event.target.value,
+                })
+              }
+            />
+          )}
           <Box
             sx={{
               paddingBottom: "15px",
               height: "20px",
-              minWidth: "350px",
+              maxWidth: "400px",
             }}
           >
             {error ? (
               <Typography variant="subtitle2" sx={{ color: "#e87c03" }}>
-                {error}
+                Please enter a valid email and pass
               </Typography>
             ) : null}
           </Box>
+          {showPassword && (
+            <Button
+              color="secondary"
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={handleLogin}
+            >
+              Login
+            </Button>
+          )}
 
-          <Button
-            color="secondary"
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            onClick={handleLogin}
-          >
-            Login
-          </Button>
+          {!showPassword && (
+            <Button
+              color="secondary"
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={() => setShowPassword(true)}
+            >
+              Get Started
+            </Button>
+          )}
         </Box>
       </Box>
     </Box>
