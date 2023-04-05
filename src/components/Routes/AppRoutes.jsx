@@ -15,7 +15,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<Signup />}/>
       <Route path="/movies" element={<Movies />}/>
       <Route path="/tv" element={<TVSeries />}/>
-      <Route path="/:id" element={<Details/>}/>
+      <Route path="/:mediaType/:id" element={<Details/>}/>
       <Route path="/" element={<Home />}/>
     </Routes>
   );

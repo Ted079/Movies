@@ -10,15 +10,6 @@ const StyledBox = styled(Box)({
   // paddingRight: "40px",
 });
 
-
-
-// const StyledCarusel = styled(Carousel)`
-
-// background: #000000;
-// `;
-
-
-
 export default function CardSlider({ data, title }) {
   const responsive = {
     desktop: {
@@ -40,7 +31,9 @@ export default function CardSlider({ data, title }) {
   };
   return (
     <StyledBox>
-      <Typography component="h1" variant="h6">{title}</Typography>
+      <Typography component="h1" variant="h5" color="#fff" fontWeight={"bold"} sx={{marginBottom:"5px"}}>
+        {title}
+      </Typography>
       <Carousel responsive={responsive}>
         {data.map((movie, index) => {
           return <MovieCard movieData={movie} index={index} key={movie.id} />;

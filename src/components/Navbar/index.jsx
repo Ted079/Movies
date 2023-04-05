@@ -47,9 +47,9 @@ const Navbar = () => {
   console.log(inputValue);
 
   return (
-    <AppBar>
+    <AppBar sx={{opacity:"0.9"}}>
       <StyledToolbar>
-        <Typography variant="h5">
+        <Typography variant="h4" marginLeft={3}>
           <StyledLink>Flixster</StyledLink>
         </Typography>
 

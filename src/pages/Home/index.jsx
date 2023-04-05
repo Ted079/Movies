@@ -4,19 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar";
 import { fetchMovies, getGenres } from "../../store";
 import Slider from "../../components/Slider";
-import {Box, styled} from "@mui/material";
- 
+import { Box, styled } from "@mui/material";
 
 const Container = styled(Box)({
   maxWidth: "1350px",
-  margin: "0 auto",
+  margin: "90px 70px",
   position: "relative",
-  marginTop:"90px",
-})
+});
 
 const Home = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
   const genresLoaded = useSelector((state) => state.flixster.genresLoaded);
   const movies = useSelector((state) => state.flixster.movies);
   const dispatch = useDispatch();
@@ -29,24 +25,15 @@ const Home = () => {
     if (genresLoaded) dispatch(fetchMovies({ type: "all" }));
   }, [genresLoaded]);
 
-  window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true);
-    return () => (window.onscroll = null);
-  };
-
   // console.log(movies);
 
   return (
     <Container>
-      <Navbar isScrolled={isScrolled} />
+      <Navbar />
 
       <Slider movies={movies} />
     </Container>
   );
 };
-
-
-
-
 
 export default Home;

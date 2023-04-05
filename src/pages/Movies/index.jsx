@@ -19,7 +19,6 @@ const Container = styled(Box)({
 
 const Movies = () => {
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const genresLoaded = useSelector((state) => state.flixster.genresLoaded);
   const movies = useSelector((state) => state.flixster.movies);
@@ -34,10 +33,7 @@ const Movies = () => {
     if (genresLoaded) dispatch(fetchMovies({ type: "movie" }));
   }, [genresLoaded]);
 
-  window.onscroll = () => {
-    setIsScrolled(window.pageXOffset === 0 ? false : true);
-    return () => (window.onscroll = null);
-  };
+ 
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     // if (currentUser) navigate("/");
@@ -46,7 +42,7 @@ const Movies = () => {
 
   return (
     <Container>
-      <Navbar isScrolled={isScrolled} />
+      <Navbar/>
       <Box>
         <SelectGenre genres={genres} type="movie" />
         {movies.length ? <Slider movies={movies} /> : <NotFound />}

@@ -2,52 +2,36 @@ import Card from "../../components/MovieCard";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar";
-import { fetchDetails, fetchMovies, getGenres } from "../../store";
+// import { fetchDetails, fetchMovies, getGenres } from "../../store";
 import Slider from "../../components/Slider";
-import {Box, styled} from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import { useParams } from "react-router-dom";
- 
+import DetailsSection from "../../components/DetailsSection";
 
 const Container = styled(Box)({
   maxWidth: "1350px",
   margin: "0 auto",
   position: "relative",
-  marginTop:"90px",
-})
+  marginTop: "90px",
+});
 
-const Details = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { id } = useParams();
-  console.log(id);
-
-  // const genresLoaded = useSelector((state) => state.flixster.genresLoaded);
-  // // const movies = useSelector((state) => state.flixster.movies);
-  // // const genres = useSelector((state) => state.flixster.genres);
+const Details = ({ data }) => {
   // const dispatch = useDispatch();
+  // const details = useSelector((state) => state.flixster.details);
 
   // useEffect(() => {
-  //   dispatch(getGenres());
+  //   dispatch(fetchDetails({}));
   // }, []);
-
-  // useEffect(() => {
-  //   if (genresLoaded) dispatch(fetchDetails({ type: "all" }));
-  // }, [genresLoaded]);
-
-
-  window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true);
-    return () => (window.onscroll = null);
-  };
-
-  // console.log(movies);
-
   return (
     <Container>
-      <Navbar isScrolled={isScrolled} />
+      <Navbar />
+      {/* {details.map((movie) => {
+        return <DetailsSection key={movie.id} {...movie}/>;
+      })} */}
 
+      <DetailsSection/>
     </Container>
   );
 };
-
 
 export default Details;

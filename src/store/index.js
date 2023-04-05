@@ -5,6 +5,8 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_KEY, TMBD_BASE_URL } from "../utils/constants";
+import { useParams } from "react-router-dom";
+
 
 const initialState = {
   movies: [],
@@ -33,10 +35,17 @@ const createArrayFromRawData = (array, moviesArray, genres) => {
         id: movie.id,
         name: movie?.original_name ? movie.original_name : movie.original_title,
         image: movie.backdrop_path,
+        overview: movie.overview,
+        mediaType: movie.media_type,
+        releaseDate: movie.release_date,
+        voteAverage: movie.vote_average,
         genres: movieGenres.slice(0, 3),
       });
   });
 };
+
+
+
 
 const getRawData = async (api, genres, paging = false) => {
   const moviesArray = [];
@@ -64,9 +73,10 @@ export const fetchMovies = createAsyncThunk(
 );
 
 
+
 // export const fetchDetails = createAsyncThunk(
 //   "flixster/details",
-//   async ({ type, id }, thunkApi) => {
+//   async ({ type, id}, thunkApi) => {
 //     const {
 //       flixster: { genres },
 //     } = thunkApi.getState();
