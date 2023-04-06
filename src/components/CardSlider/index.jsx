@@ -5,11 +5,6 @@ import "react-multi-carousel/lib/styles.css";
 import { Typography } from "@mui/material";
 import styled from "styled-components";
 
-const StyledBox = styled(Box)({
-  // marginLeft: "90px",
-  // paddingRight: "40px",
-});
-
 export default function CardSlider({ data, title }) {
   const responsive = {
     desktop: {
@@ -30,8 +25,18 @@ export default function CardSlider({ data, title }) {
     },
   };
   return (
-    <StyledBox>
-      <Typography component="h1" variant="h5" color="#fff" fontWeight={"bold"} sx={{marginBottom:"5px"}}>
+    <Box
+      sx={{
+        margingRight: "40px",
+      }}
+    >
+      <Typography
+        component="h1"
+        variant="h5"
+        color="#fff"
+        fontWeight={"bold"}
+        sx={{ marginBottom: "5px" }}
+      >
         {title}
       </Typography>
       <Carousel responsive={responsive}>
@@ -39,6 +44,6 @@ export default function CardSlider({ data, title }) {
           return <MovieCard movieData={movie} index={index} key={movie.id} />;
         })}
       </Carousel>
-    </StyledBox>
+    </Box>
   );
 }

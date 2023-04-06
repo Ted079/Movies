@@ -17,7 +17,6 @@ const StyledListItem = styled(Typography)({
   marginRight: "10px",
 });
 const StyBox = styled(Box)({
-  // marginTop:"30px",
   marginRight: "15px",
   paddingBottom: "30px",
   position: "relative",
@@ -33,7 +32,7 @@ const CardMediaA = styled(CardMedia)({
 const LinkStyled = styled(Link)({
   textDecoration: "none",
   color: "#000000",
-  cursor: "cursor-pointer",
+  // cursor: "cursor-pointer",
 });
 
 const styledCard = {
@@ -68,7 +67,7 @@ const MovieCard = ({ movieData }) => {
             />
           </Box>
         </Card>
-        <Typography variant="overline" color="#fff" fontWeight={"bold"}>
+        <Typography variant="caption" color="#d6d6d6">
           {movieData.name}
         </Typography>
 
@@ -76,7 +75,6 @@ const MovieCard = ({ movieData }) => {
           <CardContent
             sx={{
               alignContent: "space-between",
-              cursor: "context-menu",
               position: "absolute",
               zIndex: "tooltip",
               borderRadius: "5px",
@@ -112,7 +110,6 @@ const MovieCard = ({ movieData }) => {
               {movieData.releaseDate}
             </Typography>
 
-            {/* <Typography>{movieData.overview}</Typography> */}
           </CardContent>
         )}
       </StyBox>

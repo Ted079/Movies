@@ -3,23 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar";
 import { fetchMovies, getGenres } from "../../store";
 import Slider from "../../components/Slider";
-import { Box, styled } from "@mui/material";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import { firebaseAuth } from "../../utils/firebase-config";
-import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
 import SelectGenre from "../../components/SelectGenre";
 import NotFound from "../404";
-
-const Container = styled(Box)({
-  maxWidth: "1350px",
-  margin: "0 auto",
-  position: "relative",
-  marginTop: "90px",
-});
+import { Container } from "../Home/style";
 
 const Movies = () => {
-  const navigate = useNavigate();
-
   const genresLoaded = useSelector((state) => state.flixster.genresLoaded);
   const movies = useSelector((state) => state.flixster.movies);
   const genres = useSelector((state) => state.flixster.genres);
@@ -33,16 +22,9 @@ const Movies = () => {
     if (genresLoaded) dispatch(fetchMovies({ type: "movie" }));
   }, [genresLoaded]);
 
- 
-
-  onAuthStateChanged(firebaseAuth, (currentUser) => {
-    // if (currentUser) navigate("/");
-  });
-  // console.log(movies);
-
   return (
     <Container>
-      <Navbar/>
+      <Navbar />
       <Box>
         <SelectGenre genres={genres} type="movie" />
         {movies.length ? <Slider movies={movies} /> : <NotFound />}

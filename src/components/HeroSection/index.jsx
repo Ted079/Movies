@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import { heroImage } from "../../assets/static/imageUrl";
 import { Box, Typography } from "@mui/system";
 import background from "../../assets/static/login.jpg"
 

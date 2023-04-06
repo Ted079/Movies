@@ -1,35 +1,32 @@
-import Card from "../../components/MovieCard";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar";
-// import { fetchDetails, fetchMovies, getGenres } from "../../store";
-import Slider from "../../components/Slider";
-import { Box, Typography, styled } from "@mui/material";
 import { useParams } from "react-router-dom";
 import DetailsSection from "../../components/DetailsSection";
+import { fetchDetails } from "../../store";
+import { Container } from "../Home/style";
 
-const Container = styled(Box)({
-  maxWidth: "1350px",
-  margin: "0 auto",
-  position: "relative",
-  marginTop: "90px",
-});
+const Details = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
-const Details = ({ data }) => {
-  // const dispatch = useDispatch();
-  // const details = useSelector((state) => state.flixster.details);
+  useEffect(() => {
+    dispatch(fetchDetails({ type: "movie", id: id }));
+  }, [dispatch, id]);
 
-  // useEffect(() => {
-  //   dispatch(fetchDetails({}));
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchDetails({ type: "tv", id: id }));
+  }, [dispatch, id]);
+
+  const movieDetails = useSelector((state) => state.flixster.movies);
+
+  console.log(movieDetails);
+
   return (
     <Container>
       <Navbar />
-      {/* {details.map((movie) => {
-        return <DetailsSection key={movie.id} {...movie}/>;
-      })} */}
 
-      <DetailsSection/>
+      <DetailsSection  movieDetails={movieDetails}/>
     </Container>
   );
 };

@@ -1,16 +1,9 @@
-import Card from "../../components/MovieCard";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar";
 import { fetchMovies, getGenres } from "../../store";
 import Slider from "../../components/Slider";
-import { Box, styled } from "@mui/material";
-
-const Container = styled(Box)({
-  maxWidth: "1350px",
-  margin: "90px 70px",
-  position: "relative",
-});
+import { Container } from "./style";
 
 const Home = () => {
   const genresLoaded = useSelector((state) => state.flixster.genresLoaded);
@@ -25,12 +18,9 @@ const Home = () => {
     if (genresLoaded) dispatch(fetchMovies({ type: "all" }));
   }, [genresLoaded]);
 
-  // console.log(movies);
-
   return (
     <Container>
       <Navbar />
-
       <Slider movies={movies} />
     </Container>
   );

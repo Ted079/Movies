@@ -39,10 +39,10 @@ const palette = {
       secondary: '#ffffff',
       hint: 'rgba(142,27,27,0.38)',
       disabled: 'rgba(218,21,21,0.38)',
-      primary: '#505050',
+      primary: '#fff',
     },
     neutral: {
-      main: '#64748B',
+      main: '#505050',
       contrastText: '#fff',
     },
 };

@@ -21,7 +21,7 @@ const SelectGenre = ({ genres, type }) => {
       >
         {genres.map((genre) => {
           return (
-            <MenuItem value={genre.id} key={genre.id}>
+            <MenuItem sx={{color:"#000000"}} value={genre.id} key={genre.id}>
               {genre.name}
             </MenuItem>
           );
@@ -30,5 +30,6 @@ const SelectGenre = ({ genres, type }) => {
     </FormControl>
   );
 };
+
 
 export default SelectGenre;

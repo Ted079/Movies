@@ -5,13 +5,12 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_KEY, TMBD_BASE_URL } from "../utils/constants";
-import { useParams } from "react-router-dom";
-
 
 const initialState = {
   movies: [],
   genresLoaded: false,
   genres: [],
+  details: [],
 };
 
 export const getGenres = createAsyncThunk("flixster/genres", async () => {
@@ -44,9 +43,6 @@ const createArrayFromRawData = (array, moviesArray, genres) => {
   });
 };
 
-
-
-
 const getRawData = async (api, genres, paging = false) => {
   const moviesArray = [];
   for (let i = 1; moviesArray.length < 60 && i < 10; i++) {
@@ -72,21 +68,19 @@ export const fetchMovies = createAsyncThunk(
   }
 );
 
-
-
-// export const fetchDetails = createAsyncThunk(
-//   "flixster/details",
-//   async ({ type, id}, thunkApi) => {
-//     const {
-//       flixster: { genres },
-//     } = thunkApi.getState();
-//     return getRawData(
-//       `${TMBD_BASE_URL}/${type}/${id}?api_key=${API_KEY}`,
-//       genres,
-//       true
-//     );
-//   }
-// );
+export const fetchDetails = createAsyncThunk(
+  "flixster/details",
+  async ({ type, id }, thunkApi) => {
+    const {
+      flixster: { genres },
+    } = thunkApi.getState();
+    const { data } = await axios.get(
+      `${TMBD_BASE_URL}/${type}/${id}?api_key=${API_KEY}`
+    );
+    const movieData = { ...data, genres };
+    return movieData;
+  }
+);
 
 export const fetchDataByGenre = createAsyncThunk(
   "flixster/moviesByGenres",
@@ -96,9 +90,9 @@ export const fetchDataByGenre = createAsyncThunk(
     } = thunkApi.getState();
     return getRawData(
       `${TMBD_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genre}`,
-      genres
+      genres,
+      true
     );
-    // console.log(data);
   }
 );
 
@@ -118,9 +112,9 @@ const FlixsterSlice = createSlice({
       state.movies = action.payload;
     });
 
-    // builder.addCase(fetchDetails.fulfilled, (state, action) => {
-    //   state.movies = action.payload;
-    // });
+    builder.addCase(fetchDetails.fulfilled, (state, action) => {
+      state.movies = action.payload;
+    });
   },
 });
 

@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import HeroSection from "../../components/HeroSection";
+import { Box } from "@mui/material";
 
 function NotFound() {
   return (
-    <h1>NotFound</h1>
-  )
+    <Box>
+      <h1>Not Found</h1>
+    </Box>
+  );
 }
 
 export default NotFound;
