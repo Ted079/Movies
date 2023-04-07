@@ -23,6 +23,9 @@ const Home = () => {
     <Container>
       <Navbar />
       <Slider movies={movies} />
+      <br />
+      <hr />
+      <Footer/>
     </Container>
   );
 };

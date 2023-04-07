@@ -57,7 +57,7 @@ const Signup = () => {
             flexDirection: "column",
             alignItems: "center",
             padding: { xs: 5, sm: 6, md: 6 },
-            height: { xs: "100vh", sm: "100vh", md: "" },
+            height: { xs: "70vh", sm: "80vh", md: "" },
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
@@ -126,6 +126,8 @@ const Signup = () => {
           </Button>
         </Box>
       </Box>
+      <hr />
+      <br />
       <Footer />
     </Box>
   );

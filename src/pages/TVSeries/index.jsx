@@ -6,6 +6,7 @@ import Slider from "../../components/Slider";
 import SelectGenre from "../../components/SelectGenre";
 import NotFound from "../404";
 import { Container } from "../Home/style";
+import Footer from "../../components/Footer";
 
 const TVSeries = () => {
   const genresLoaded = useSelector((state) => state.flixster.genresLoaded);
@@ -29,6 +30,9 @@ const TVSeries = () => {
         <SelectGenre genres={genres} type="tv" />
         {movies.length ? <Slider movies={movies} /> : <NotFound />}
       </div>
+      <br />
+      <hr />
+      <Footer/>
     </Container>
   );
 };

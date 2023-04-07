@@ -71,7 +71,7 @@ const DetailsSection = ({ movieDetails }) => {
           </StyledListItem>
         </List>
 
-        <Box>
+        <Box sx={{marginBottom:"80px"}}>
           <Typography sx={{ lineHeight: "2" }} fontWeight={"bold"} variant="h5">
             Overview:
           </Typography>

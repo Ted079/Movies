@@ -1,68 +1,37 @@
-import {
-  Button,
-  Box,
-  AppBar,
-  Toolbar,
-  Container,
-  Typography,
-  InputBase,
-  styled,
-  CssBaseline,
-  BottomNavigation,
-  BottomNavigationAction,
-  ListItem,
-  List,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { StyledBox, StyledTyp, Wrapper } from "./style";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from '@mui/icons-material/Facebook';
-
-const StyledBox = styled(Box)({
-  width: "100%",
-  // height:"10px",
-  position: "absolute",
-  opacity:"0.9",
-  left: 0,
-  bottom: 0,
-});
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 const Footer = () => {
   return (
-    
-    <StyledBox>
-      {/* <hr/>
-       <List sx={{display:"flex", color:"white"}}>
-        <ListItem>Privacy</ListItem>
-        <ListItem>About</ListItem>
-        <ListItem>About</ListItem>
-        <ListItem>Help</ListItem>
-        <ListItem>Term and Policles</ListItem>
-       </List> */}
-      <BottomNavigation
+    <StyledBox
+      sx={{
+        position: { sx: "static", sm: "static", md: "absolute" },
+      }}
+    >
+      <Wrapper
         sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          bgcolor: "#000000"       
-         }}
+          padding: { xs: "0px px", sm: "0px 30px ", md: "30px 90px" },
+        }}
       >
-        <BottomNavigationAction
-          label="instagram"
-          value="instagram"
-          icon={<InstagramIcon />}
-        />
-        <BottomNavigationAction
-          label="facebook"
-          value="facebook"
-          icon={<FacebookIcon />}
-        />
-        <BottomNavigationAction
-          label="twitter"
-          value="twitter"
-          icon={<TwitterIcon />}
-        />
-      </BottomNavigation>
+        <Box>
+          <StyledTyp>FAQ</StyledTyp>
+          <StyledTyp>Contact us.</StyledTyp>
+        </Box>
+        <Box>
+          <StyledTyp>Help Center.</StyledTyp>
+          <StyledTyp>Corporate Information</StyledTyp>
+        </Box>
+        <Box>
+          <StyledTyp>Privacy</StyledTyp>
+        </Box>
+        <Box sx={{ display: { xs: "none", sm: "flex ", md: "flex" } }}>
+          <StyledTyp>Terms of Use</StyledTyp>
+        </Box>
+      </Wrapper>
     </StyledBox>
   );
 };

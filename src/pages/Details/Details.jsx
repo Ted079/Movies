@@ -28,6 +28,8 @@ const Details = () => {
       <Navbar />
 
       <DetailsSection movieDetails={movieDetails} />
+      <hr />
+      <Footer/>
     </Container>
   );
 };

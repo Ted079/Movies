@@ -11,7 +11,7 @@ export default function LoginBackground() {
           backgroundRepeat: "no-repeat",
           backgroundColor: "rgba(0, 0, 0, 0.5)",
           backgroundSize: "cover",
-          height: "88vh",
+          height:{ xs:"80hv", sm:"80hv", md:"104vh"},
           width: "100%",
           position: "absolute",
           zIndex: "tooltip",

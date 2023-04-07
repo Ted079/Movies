@@ -50,7 +50,7 @@ const Navbar = () => {
     <AppBar sx={{ opacity: "0.9" }}>
       <StyledToolbar>
         <Typography variant="h4" marginLeft={3}>
-          <StyledLink>Flixster</StyledLink>
+          <StyledLink to="/">Flixster</StyledLink>
         </Typography>
 
         <List

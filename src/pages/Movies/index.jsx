@@ -7,6 +7,7 @@ import { Box } from "@mui/material";
 import SelectGenre from "../../components/SelectGenre";
 import NotFound from "../404";
 import { Container } from "../Home/style";
+import Footer from "../../components/Footer";
 
 const Movies = () => {
   const genresLoaded = useSelector((state) => state.flixster.genresLoaded);
@@ -29,6 +30,9 @@ const Movies = () => {
         <SelectGenre genres={genres} type="movie" />
         {movies.length ? <Slider movies={movies} /> : <NotFound />}
       </Box>
+      <br />
+      <hr />
+      <Footer/>
     </Container>
   );
 };

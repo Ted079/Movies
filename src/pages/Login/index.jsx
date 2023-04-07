@@ -54,7 +54,7 @@ const Login = () => {
             flexDirection: "column",
             alignItems: "center",
             padding: { xs: 5, sm: 6, md: 6 },
-            height: { xs: "100vh", sm: "100vh", md: "" },
+            height: { xs: "90vh", sm: "80vh", md: "" },
           }}
         >
           <StyTyp component="h1" variant="h4" fontWeight={"bold"}>
@@ -144,6 +144,8 @@ const Login = () => {
           )}
         </Box>
       </Box>
+      <hr />
+      <br />
       <Footer/>
     </Box>
   );
