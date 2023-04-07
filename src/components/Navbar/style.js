@@ -19,7 +19,9 @@ export const NavLinksStyles = ({ isActive }) => {
 };
 
 export const StyledSearchBox = styled(Box)({
+  maxWidth:"200px",
   alignItems: "center",
+  marginLeft:"15px",
   borderRadius: "5px",
   paddingLeft: "10px",
   paddingTop: "3px",

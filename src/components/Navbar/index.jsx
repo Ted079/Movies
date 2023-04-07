@@ -47,7 +47,7 @@ const Navbar = () => {
   console.log(inputValue);
 
   return (
-    <AppBar sx={{opacity:"0.9"}}>
+    <AppBar sx={{ opacity: "0.9" }}>
       <StyledToolbar>
         <Typography variant="h4" marginLeft={3}>
           <StyledLink>Flixster</StyledLink>
@@ -85,18 +85,20 @@ const Navbar = () => {
           {/* </form> */}
         </StyledSearchBox>
 
-        <Button
-          sx={{ width: 100, color: "white" }}
-          variant="outlined"
-          onClick={() => signOut(firebaseAuth)}
-        >
-          <LogoutIcon fontSize="small" />
-          {/* Log Out */}
-        </Button>
-        <MenuIcon
-          sx={{ display: { xs: "block", sm: "block", md: "none" } }}
-          onClick={() => SetOpen(!open)}
-        />
+        <Box sx={{display:"flex"}}>
+          <Button
+            sx={{ width: 100, color: "white" }}
+            variant="outlined"
+            onClick={() => signOut(firebaseAuth)}
+          >
+            <LogoutIcon fontSize="small" />
+            {/* Log Out */}
+          </Button>
+          <MenuIcon
+            sx={{ display: { xs: "block", sm: "block", md: "none" }, marginTop:"3px" }}
+            onClick={() => SetOpen(!open)}
+          />
+        </Box>
       </StyledToolbar>
       <Menu
         id="demo-positioned-menu"

@@ -20,31 +20,31 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from '@mui/icons-material/Facebook';
 
 const StyledBox = styled(Box)({
-  backgroundColor: "black",
-  opacity: "0.9",
   width: "100%",
+  // height:"10px",
   position: "absolute",
+  opacity:"0.9",
   left: 0,
-  bottom: -66,
+  bottom: 0,
 });
 
 const Footer = () => {
   return (
     
     <StyledBox>
-      <hr/>
+      {/* <hr/>
        <List sx={{display:"flex", color:"white"}}>
         <ListItem>Privacy</ListItem>
         <ListItem>About</ListItem>
         <ListItem>About</ListItem>
         <ListItem>Help</ListItem>
         <ListItem>Term and Policles</ListItem>
-       </List>
-      {/* <BottomNavigation
+       </List> */}
+      <BottomNavigation
         sx={{
           display: "flex",
           justifyContent: "space-around",
-          bgcolor: "red"       
+          bgcolor: "#000000"       
          }}
       >
         <BottomNavigationAction
@@ -62,7 +62,7 @@ const Footer = () => {
           value="twitter"
           icon={<TwitterIcon />}
         />
-      </BottomNavigation> */}
+      </BottomNavigation>
     </StyledBox>
   );
 };

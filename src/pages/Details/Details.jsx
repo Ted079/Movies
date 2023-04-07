@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import DetailsSection from "../../components/DetailsSection";
 import { fetchDetails } from "../../store";
 import { Container } from "../Home/style";
+import Footer from "../../components/Footer";
 
 const Details = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const Details = () => {
     <Container>
       <Navbar />
 
-      <DetailsSection  movieDetails={movieDetails}/>
+      <DetailsSection movieDetails={movieDetails} />
     </Container>
   );
 };

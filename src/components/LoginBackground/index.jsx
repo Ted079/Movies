@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/system";
-import background from "../../assets/static/login.jpg";
+import background from "../../assets/static/login3.jpg";
 
 export default function LoginBackground() {
   return (
@@ -11,7 +11,7 @@ export default function LoginBackground() {
           backgroundRepeat: "no-repeat",
           backgroundColor: "rgba(0, 0, 0, 0.5)",
           backgroundSize: "cover",
-          height: "100vh",
+          height: "88vh",
           width: "100%",
           position: "absolute",
           zIndex: "tooltip",

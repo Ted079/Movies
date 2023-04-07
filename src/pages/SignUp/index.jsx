@@ -62,7 +62,7 @@ const Signup = () => {
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
 
-          <Typography color={"background.default"} component="h1" variant="h5">
+          <Typography component="h1" variant="h5">
             Sign up
           </Typography>
 
@@ -126,7 +126,7 @@ const Signup = () => {
           </Button>
         </Box>
       </Box>
-      {/* <Footer /> */}
+      <Footer />
     </Box>
   );
 };

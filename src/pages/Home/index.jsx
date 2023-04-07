@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar";
 import { fetchMovies, getGenres } from "../../store";
 import Slider from "../../components/Slider";
 import { Container } from "./style";
+import Footer from "../../components/Footer";
 
 const Home = () => {
   const genresLoaded = useSelector((state) => state.flixster.genresLoaded);

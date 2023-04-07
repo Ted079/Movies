@@ -144,6 +144,7 @@ const Login = () => {
           )}
         </Box>
       </Box>
+      <Footer/>
     </Box>
   );
 };

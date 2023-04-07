@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Typography } from "@mui/material";
 import styled from "styled-components";
+import Footer from "../Footer";
 
 export default function CardSlider({ data, title }) {
   const responsive = {
