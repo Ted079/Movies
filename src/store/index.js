@@ -96,6 +96,19 @@ export const fetchDataByGenre = createAsyncThunk(
   }
 );
 
+export const searchMulti = async (query) => {
+  try {
+    const { data } = await axios.get(
+      `${TMBD_BASE_URL}/search/multi?api_key=${API_KEY}&query=${query}`
+    );
+    return data.results;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+
 const FlixsterSlice = createSlice({
   name: "Flixster",
   initialState,
@@ -113,7 +126,7 @@ const FlixsterSlice = createSlice({
     });
 
     builder.addCase(fetchDetails.fulfilled, (state, action) => {
-      state.movies = action.payload;
+      state.details = action.payload;
     });
   },
 });

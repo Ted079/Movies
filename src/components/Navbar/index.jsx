@@ -76,13 +76,13 @@ const Navbar = () => {
           <Box>
             <SearchIcon />
           </Box>
-          {/* <form> */}
+          <form>
           <InputBase
             placeholder="Search..."
             onChange={onHandleChange}
             value={inputValue}
           />
-          {/* </form> */}
+          </form>
         </StyledSearchBox>
 
         <Box sx={{display:"flex"}}>

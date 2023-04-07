@@ -5,7 +5,7 @@ import Login from "../../pages/Login";
 import Signup from "../../pages/SignUp";
 import Movies from "../../pages/Movies";
 import TVSeries from "../../pages/TVSeries";
-import Details from "../../pages/Details/Details";
+import Details from "../../pages/Details";
 
 
 const AppRoutes = () => {

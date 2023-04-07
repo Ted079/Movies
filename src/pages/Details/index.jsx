@@ -8,18 +8,16 @@ import { Container } from "../Home/style";
 import Footer from "../../components/Footer";
 
 const Details = () => {
-  const { id } = useParams();
+  const { mediaType, id } = useParams();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchDetails({ type: "movie", id: id }));
-  }, [dispatch, id]);
+  console.log(mediaType);
 
   useEffect(() => {
-    dispatch(fetchDetails({ type: "tv", id: id }));
+    dispatch(fetchDetails({ type: mediaType, id: id }));
   }, [dispatch, id]);
 
-  const movieDetails = useSelector((state) => state.flixster.movies);
+  const movieDetails = useSelector((state) => state.flixster.details);
 
   console.log(movieDetails);
 
@@ -29,7 +27,7 @@ const Details = () => {
 
       <DetailsSection movieDetails={movieDetails} />
       <hr />
-      <Footer/>
+      <Footer />
     </Container>
   );
 };
